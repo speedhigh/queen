@@ -88,6 +88,8 @@ const getPointList = function(tid = '550801603') {
   })
 } 
 
+
+/* 员工相关 */
 const staff = reactive({
   title: '选择员工',
   list: []

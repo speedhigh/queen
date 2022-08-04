@@ -1,13 +1,13 @@
 <template>
   <div class="common-layout">
-    <el-container>
+    <el-container class="pl-[220px]">
       <!-- 侧边栏 -->
-      <el-aside width="220px">
+      <el-aside width="220px" class="bg-[#374151] fixed left-0 z-50">
         <layout-aside />
       </el-aside>
-      <el-container>
+      <el-container class="relative pt-[60px]">
         <!-- 头部栏 -->
-        <el-header class="shadow-md">
+        <el-header class="shadow-md fixed top-0 inset-x-0 bg-white z-40">
           <layout-header />
         </el-header>
         <!-- 内容部分 -->
