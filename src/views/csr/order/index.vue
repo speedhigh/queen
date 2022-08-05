@@ -38,7 +38,7 @@
           <el-table-column prop="logisticNum" label="物流单号" min-width="100" />
           <el-table-column label="操作">
             <template #default="scope">
-              <p class="text-primary cursor-pointer hover:font-bold hover:underline" @click="toDetail(scope.row)">物流信息</p>
+              <p class="text-primary cursor-pointer hover:font-bold hover:underline" @click="toDetail(scope.row)">查看详情</p>
             </template>
           </el-table-column>
         </el-table>

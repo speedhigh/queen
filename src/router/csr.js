@@ -4,7 +4,8 @@ export default [
     path: '/csr/order',
     component:() => import('../views/csr/order/index.vue'),
     meta: {
-      name: 'CSROrder'
+      name: 'CSROrder',
+      role: [1, 2]
     }
   },
 
@@ -13,7 +14,8 @@ export default [
     path: '/csr/detail/:id',
     component:() => import('../views/csr/order/detail.vue'),
     meta: {
-      name: 'CSROrder'
+      name: 'CSROrder',
+      role: [1, 2]
     }
   },
 ]

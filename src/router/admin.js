@@ -4,7 +4,8 @@ export default [
     path: '/admin/account',
     component:() => import('../views/admin/account/index.vue'),
     meta: {
-      name: 'AdminAccount'
+      name: 'AdminAccount',
+      role: [1, 2]
     }
   },
 
@@ -13,7 +14,8 @@ export default [
     path: '/admin/business',
     component:() => import('../views/admin/business/index.vue'),
     meta: {
-      name: 'AdminBusiness'
+      name: 'AdminBusiness',
+      role: [1, 2]
     }
   },
   // 添加商品
@@ -21,7 +23,8 @@ export default [
     path: '/admin/business/addproduct',
     component:() => import('../views/admin/business/addproduct.vue'),
     meta: {
-      name: 'AdminBusiness'
+      name: 'AdminBusiness',
+      role: [1, 2]
     }
   },
 ]

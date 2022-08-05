@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { watch } from 'vue'
 import { shallowRef } from '@vue/reactivity'
 import AMapLoader from '@amap/amap-jsapi-loader'
 
@@ -32,37 +32,41 @@ const initMap = function () {
     map.value = new AMap.Map("container", {
       resizeEnable: true,
       zoom: 15,
-      center: props.path ? '' : [props.path[0][0], props.path[0][1]],
+      center: props.path.length > 0 ? [props.path[0][0], props.path[0][1]] : '',
     })
 
-    props.stay.forEach((item, index) => {
-      textList.value[index] = new AMap.Text({
-        text: '停留'+item.time+'分钟',
-        anchor:'center', // 设置文本标记锚点
-        draggable:true,
-        cursor:'pointer',
-        style:{
-          'background-color': '#F13130',
-          'color': 'white',
-          'font-size': '12px',
-          'border-radius': '0.3rem'
-        },
-        // offset: new AMap.Pixel(40, -10),
-        position: [item.x, item.y],
+    if(props.stay.length > 0) {
+      props.stay.forEach((item, index) => {
+        textList.value[index] = new AMap.Text({
+          text: '停留'+item.time+'分钟',
+          anchor:'center', // 设置文本标记锚点
+          draggable:true,
+          cursor:'pointer',
+          style:{
+            'background-color': '#F13130',
+            'color': 'white',
+            'font-size': '12px',
+            'border-radius': '0.3rem'
+          },
+          // offset: new AMap.Pixel(40, -10),
+          position: [item.x, item.y],
+        })
       })
-    })
+    }
 
     // 绘制轨迹
-    polyline.value = new AMap.Polyline({
-      map: map.value,
-      path: props.path,
-      strokeColor: "#FF432A",
-      lineJoin: 'round',
-      lineCap: 'round',
-      strokeWeight: 5,
-      strokeOpacity:0.7,
-      showDir:true
-    })
+    if(props.path.length > 0) {
+      polyline.value = new AMap.Polyline({
+        map: map.value,
+        path: props.path,
+        strokeColor: "#FF432A",
+        lineJoin: 'round',
+        lineCap: 'round',
+        strokeWeight: 5,
+        strokeOpacity:0.7,
+        showDir: true
+      })
+    }
 
     map.value.add([polyline.value])
     map.value.add(textList.value)
@@ -72,4 +76,10 @@ const initMap = function () {
   })
 }
 initMap()
+watch(() => [...props.path], (value) => {
+  initMap()
+})
+watch(() => [...props.stay], (value) => {
+  initMap()
+})
 </script>

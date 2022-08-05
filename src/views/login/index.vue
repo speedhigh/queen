@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5 bg-gradient-to-br from-orange-100 to-red-200">
+  <div class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5 bg-gradient-to-br from-orange-50 to-red-100">
     <div class=" bg-[rgba(255,255,255,0.5)] text-gray-500 rounded-3xl shadow-xl shadow-red-300/50 w-full overflow-hidden" style="max-width:900px">
       <div class="md:flex w-full">
         <div class="hidden md:block w-1/2 bg-primary py-10 px-10">

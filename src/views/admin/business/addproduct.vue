@@ -101,7 +101,6 @@ import { ref, reactive } from 'vue'
 import api from '/src/api/index.js'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import '@wangeditor/editor/dist/css/style.css'
 
 const router = useRouter()
 const formRef = ref()

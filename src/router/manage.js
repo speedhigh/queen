@@ -5,14 +5,16 @@ export default [
     path: '/manage/staff/list',
     component:() => import('../views/manage/staff/index.vue'),
     meta: {
-      name: 'ManageStaffList'
+      name: 'ManageStaffList',
+      role: [1, 4]
     }
   },
   {
     path: '/manage/staff/add',
     component:() => import('../views/manage/staff/add.vue'),
     meta: {
-      name: 'ManageStaffAdd'
+      name: 'ManageStaffAdd',
+      role: [1, 4]
     }
   },
   /**** 业务统计 ****/
@@ -21,7 +23,8 @@ export default [
     path: '/manage/business/stats',
     component:() => import('../views/manage/business/index.vue'),
     meta: {
-      name: 'ManageBusinessStats'
+      name: 'ManageBusinessStats',
+      role: [1, 4]
     }
   },
 
@@ -30,7 +33,8 @@ export default [
     path: '/manage/business/detail/:id',
     component:() => import('../views/manage/business/detail.vue'),
     meta: {
-      name: 'ManageBusinessStats'
+      name: 'ManageBusinessStats',
+      role: [1, 4]
     }
   },
 
@@ -41,7 +45,17 @@ export default [
     path: '/manage/position/staff',
     component:() => import('../views/manage/position/staff.vue'),
     meta: {
-      name: 'ManagePositionStaff'
+      name: 'ManagePositionStaff',
+      role: [1, 4]
+    }
+  },
+  // 日期定位
+  {
+    path: '/manage/position/date/:id',
+    component:() => import('../views/manage/position/date.vue'),
+    meta: {
+      name: 'ManagePositionData',
+      role: [1, 4]
     }
   },
   // 近期数据
@@ -49,7 +63,8 @@ export default [
     path: '/manage/position/data',
     component:() => import('../views/manage/position/data.vue'),
     meta: {
-      name: 'ManagePositionData'
+      name: 'ManagePositionData',
+      role: [1, 4]
     }
   }
 ]

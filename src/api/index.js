@@ -79,6 +79,5 @@ api.delete = function(url, params) {
   return new Promise((resolve) => {
     http({ method: "delete", url: url, params:params }).then((res) => { resolve(res) })
   })
-}
-
+}                                                                                                                                                                              
 export default api

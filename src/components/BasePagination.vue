@@ -56,7 +56,7 @@ export default {
         console.log('data', res)
         if(res.data.code === 20000) {
           total.value = res.data.data.total
-          localList.value = res.data.data.data
+          localList.value = res.data.data.data ? res.data.data.data : []
         } else {
           total.value = 0
           localList.value = []

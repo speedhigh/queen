@@ -4,7 +4,8 @@ export default [
     path: '/logistic/list',
     component:() => import('../views/logistic/list/index.vue'),
     meta: {
-      name: 'LogisticList'
+      name: 'LogisticList',
+      role: [1, 3]
     }
   },
 
@@ -13,7 +14,8 @@ export default [
     path: '/logistic/detail/:id',
     component:() => import('../views/logistic/list/detail.vue'),
     meta: {
-      name: 'LogisticList'
+      name: 'LogisticList',
+      role: [1, 3]
     }
   },
 ]

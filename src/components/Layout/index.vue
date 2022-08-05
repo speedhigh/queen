@@ -2,7 +2,7 @@
   <div class="common-layout">
     <el-container class="pl-[220px]">
       <!-- 侧边栏 -->
-      <el-aside width="220px" class="bg-[#374151] fixed left-0 z-50">
+      <el-aside width="220px" class="bg-[#03776A] fixed left-0 z-50">
         <layout-aside />
       </el-aside>
       <el-container class="relative pt-[60px]">

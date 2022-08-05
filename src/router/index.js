@@ -24,7 +24,8 @@ const routes= [
         path: '/home',
         component:() => import('../views/index.vue'),
         meta: {
-          name: 'Home'
+          name: 'Home',
+          role: [1, 2, 3, 4]
         }
       },
 
@@ -45,7 +46,8 @@ const routes= [
         path: '/changepwd',
         component:() => import('../views/changepwd/index.vue'),
         meta: {
-          name: 'ChangePwd'
+          name: 'ChangePwd',
+          role: [1, 2, 3, 4]
         }
       },
 
@@ -53,7 +55,10 @@ const routes= [
       {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
-        component:() => import('../views/404/index.vue')
+        component:() => import('../views/404/index.vue'),
+        meta: {
+          role: [1, 2, 3, 4]
+        }
       }
     ]
   },
@@ -71,9 +76,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to,from,next) => {
+  // JSON.parse(sessionStorage.getItem('user'))
   if(to.path === '/login') return next()
-  const tokenStr = window.sessionStorage.getItem("token")
-  if(!tokenStr) return next('/login')
+  if(!window.sessionStorage.getItem("token")) return next('/login')
+  if(to.meta.role.length > 0 && !to.meta.role.includes(JSON.parse(window.sessionStorage.getItem('user')).roleid)) return next('/404')
   next()
 })
 
