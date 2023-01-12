@@ -36,12 +36,12 @@
           + 添加账号
         </button>
         <!-- 导出数据 -->
-        <button 
+        <!-- <button 
           class="text-sm text-white bg-teal-500 rounded w-24 h-8 relative hover:bg-teal-600"
           @click="exportExcel"  
         >
           导出excel
-        </button>
+        </button> -->
       </div>
     </div>
     <base-pagination

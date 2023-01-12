@@ -10,5 +10,5 @@ import { Vue3Lottie } from 'vue3-lottie'
 import 'vue3-lottie/dist/style.css'
 import BookJson from '/src/assets/book.json'
 
-const user = JSON.parse(sessionStorage.getItem('user')) 
+const user = JSON.parse(sessionStorage.getItem('user'))
 </script>
