@@ -99,7 +99,7 @@
             </div>
             <div class="flex">
               <p class="font-bold w-32 flex-shrink-0">快递详情：</p>
-              <p class="text-gray-600">{{ data.logistic.message }}</p>
+              <p v-if="data.logistic" class="text-gray-600">{{ data.logistic.message }}</p>
             </div>
           </td>
         </tr>
@@ -121,7 +121,10 @@ const data = ref({
 })
 
 api.get('/logistic/orderInfo', { orderid: route.params.id }).then((res) => {
-  if(res.data.code === 20000) Object.assign(data.value, res.data.data)
+  console.log(res.data.data)
+  if(res.data.code === 20000) {
+    data.value = res.data.data
+  }
 })
 </script>
 

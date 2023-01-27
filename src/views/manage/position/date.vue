@@ -13,7 +13,7 @@
       </button>
       <!-- 选择时间段 -->
       <div class="space-x-4">
-        <el-time-select
+        <!-- <el-time-select
           v-model="startTime"
           :max-time="endTime"
           size="large"
@@ -33,14 +33,14 @@
           step="00:15"
           end="20:00"
           @change="changeEndTime"
-        />
+        /> -->
       </div>
     </div>
     <div class="absolute bottom-8 left-8">
       <div class="h-[40px] bg-white px-4 shadow-md rounded text-sm text-gray-600 flex items-center space-x-8 cursor-default">
         <p>{{ $route.query.d }} {{ $route.query.n }} 的运动轨迹</p>
-        <p>全程 {{ distance }}km</p>
-        <p>用时 {{ time }}</p>
+        <!-- <p>全程 {{ distance }}km</p>
+        <p>用时 {{ time }}</p> -->
       </div>
     </div>
   </div>
@@ -62,44 +62,53 @@ const time = ref('')
 const distance = ref(0)
 
 const getMapData = function(mapData) {
+  for(let index = 0; index < mapData.length; index++) {
+    let item = mapData[index]
+    // let i = item.location.indexOf(',')
+    path.value[index] = [item.longitude, item.latitude]
+    console.log('cccccccc', item.longitude, item.latitude)
+  }
+
   // 路线信息
-  if(mapData.points) {
-    for(let index = 0; index < mapData.points.length; index++) {
-      let item = mapData.points[index]
-      let i = item.location.indexOf(',')
-      path.value[index] = [item.location.slice(0,i), item.location.slice(i + 1)]
-    }
-  }
+  // if(mapData.points) {
+  //   for(let index = 0; index < mapData.points.length; index++) {
+  //     let item = mapData.points[index]
+  //     let i = item.location.indexOf(',')
+  //     path.value[index] = [item.location.slice(0,i), item.location.slice(i + 1)]
+  //   }
+  // }
   // 停留信息
-  if(mapData.stayPoints) {
-    for(let index = 0; index < mapData.stayPoints.length; index++) {
-      let item = mapData.stayPoints[index]
-      let i = item.location.indexOf(',')
-      stay.value[index] = {
-        x: item.location.slice(0, i),
-        y: item.location.slice(i + 1),
-        address: item.address,
-        time: Math.round([item.endTime - item.startTime]/60000)
-      }
-    }
-  }
+  // if(mapData.stayPoints) {
+  //   for(let index = 0; index < mapData.stayPoints.length; index++) {
+  //     let item = mapData.stayPoints[index]
+  //     let i = item.location.indexOf(',')
+  //     stay.value[index] = {
+  //       x: item.location.slice(0, i),
+  //       y: item.location.slice(i + 1),
+  //       address: item.address,
+  //       time: Math.round([item.endTime - item.startTime]/60000)
+  //     }
+  //   }
+  // }
 }
 
 // 根据 时间段 获取当日的 路线信息 和 停留信息
 const getTracebydate = function() {
   let params = {
     date: route.query.d,
-    start: startTime.value ? route.query.d + ' ' + startTime.value : '',
-    end: endTime.value ? route.query.d + ' ' + endTime.value : '',
-    uid: route.params.id
+    userId: route.params.id
+    // start: startTime.value ? route.query.d + ' ' + startTime.value : '',
+    // end: endTime.value ? route.query.d + ' ' + endTime.value : '',
+    // uid: route.params.id
   }
-  api.get('/position/getTracebydate', pickBy(params)).then((res) => {
-    if(res.data.code === 20000 && res.data.data.points.length > 0) {
+  api.get('/position/getUserPositionDetail', pickBy(params)).then((res) => {
+    if(res.data.code === 20000 && res.data.data.length > 0) {
+      console.log(res.data.data)
       getMapData(res.data.data)
-      time.value = formatSeconds(res.data.data.time)
-      distance.value = res.data.data.distance/1000
+      // time.value = formatSeconds(res.data.data.time)
+      // distance.value = res.data.data.distance/1000
     } else {
-      stay.value = path.value = []
+      // stay.value = path.value = []
       ElMessage({type: 'warning', message: '该时间范围内没有轨迹'})
     }
   })

@@ -23,7 +23,7 @@
         </template>
       </el-dropdown>
       <!-- 选择时间段 -->
-      <div class="space-x-4">
+      <!-- <div class="space-x-4">
         <el-time-select
           v-model="startTime"
           :disabled="timeDisabled"
@@ -46,7 +46,7 @@
           end="20:00"
           @change="changeEndTime"
         />
-      </div>
+      </div> -->
     </div>
     <div 
       v-if="staff.title !== '选择员工'"
@@ -54,8 +54,8 @@
     >
       <div class="h-[40px] bg-white px-4 shadow-lg rounded text-sm text-gray-600 flex items-center space-x-8">
         <p>当前正在浏览 {{ staff.title }} 的运动轨迹</p>
-        <p>全程 {{ distance }}km</p>
-        <p>用时 {{ time }}</p>
+        <!-- <p>全程 {{ distance }}km</p>
+        <p>用时 {{ time }}</p> -->
       </div>
       <button 
         class="h-[40px] w-48 bg-primary text-white text-sm rounded shadow-lg opacity-90 hover:bg-red-400"
@@ -82,27 +82,32 @@ const time = ref('')
 const distance = ref(0)
 
 const getMapData = function(mapData) {
-  // 路线信息
-  if(mapData.points) {
-    for(let index = 0; index < mapData.points.length; index++) {
-      let item = mapData.points[index]
-      let i = item.location.indexOf(',')
-      path.value[index] = [item.location.slice(0,i), item.location.slice(i + 1)]
-    }
+  for(let index = 0; index < mapData.length; index++) {
+    let item = mapData[index]
+    path.value[index] = [item.longitude, item.latitude]
   }
-  // 停留信息
-  if(mapData.stayPoints) {
-    for(let index = 0; index < mapData.stayPoints.length; index++) {
-      let item = mapData.stayPoints[index]
-      let i = item.location.indexOf(',')
-      stay.value[index] = {
-        x: item.location.slice(0, i),
-        y: item.location.slice(i + 1),
-        address: item.address,
-        time: Math.round([item.endTime - item.startTime]/60000)
-      }
-    }
-  }
+
+  // // 路线信息
+  // if(mapData.points) {
+  //   for(let index = 0; index < mapData.points.length; index++) {
+  //     let item = mapData.points[index]
+  //     let i = item.location.indexOf(',')
+  //     path.value[index] = [item.location.slice(0,i), item.location.slice(i + 1)]
+  //   }
+  // }
+  // // 停留信息
+  // if(mapData.stayPoints) {
+  //   for(let index = 0; index < mapData.stayPoints.length; index++) {
+  //     let item = mapData.stayPoints[index]
+  //     let i = item.location.indexOf(',')
+  //     stay.value[index] = {
+  //       x: item.location.slice(0, i),
+  //       y: item.location.slice(i + 1),
+  //       address: item.address,
+  //       time: Math.round([item.endTime - item.startTime]/60000)
+  //     }
+  //   }
+  // }
 }
 // 根据某人tid 获取路线信息 和 停留信息
 const getPointList = function(tid = '550801603') {
@@ -125,15 +130,16 @@ const getTracebydate = function() {
   let today = dayjs(new Date()).format('YYYY-MM-DD')
   let params = {
     date: today,
-    start: startTime.value ? today + ' ' + startTime.value : '',
-    end: endTime.value ? today + ' ' + endTime.value : '',
-    uid: staff.id
+    userId: staff.id
+    // start: startTime.value ? today + ' ' + startTime.value : '',
+    // end: endTime.value ? today + ' ' + endTime.value : '',
+    // uid: staff.id
   }
-  api.get('/position/getTracebydate', pickBy(params)).then((res) => {
-    if(res.data.data.points.length > 0) {
+  api.get('/position/getUserPositionDetail', pickBy(params)).then((res) => {
+    if(res.data.data.length > 0) {
       getMapData(res.data.data)
-      time.value = formatSeconds(res.data.data.time)
-      distance.value = res.data.data.distance/1000
+      // time.value = formatSeconds(res.data.data.time)
+      // distance.value = res.data.data.distance/1000
     } else {
       ElMessage({type: 'warning', message: '该时间范围内没有轨迹'})
     }
@@ -155,17 +161,18 @@ api.get('/position/getAllSalseList').then((res) => {
 const selStaff = function(name,id,tid) {
   staff.title = name
   staff.id = id
-  getPointList(tid)
+  // getPointList(tid)
+  getTracebydate()
 }
 
 /* 时间段 */
-const startTime = ref('')
-const endTime = ref('')
+// const startTime = ref('')
+// const endTime = ref('')
 const timeDisabled = ref(true)
-const changeStartTime = function() {
-  getTracebydate()
-}
-const changeEndTime = function() {
-  getTracebydate()
-}
+// const changeStartTime = function() {
+//   getTracebydate()
+// }
+// const changeEndTime = function() {
+//   getTracebydate()
+// }
 </script>

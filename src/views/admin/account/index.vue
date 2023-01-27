@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-4">
-    <div class="flex items-center space-x-8">
+    <div class="flex items-center space-x-6">
       <!-- 姓名 -->
       <div class="flex items-center">
         <p class="text-sm flex-shrink-0">姓名：</p>
@@ -52,11 +52,11 @@
     >
       <template #default="slotProps">
         <el-table :data="slotProps.list" :border="true" stripe style="width: 100%">
-          <el-table-column prop="id" label="ID" min-width="50" />
-          <el-table-column prop="name" label="姓名" min-width="90" />
-          <el-table-column prop="mobile" label="手机号" min-width="120" />
-          <el-table-column prop="insertTime" label="注册时间" min-width="180" />
-          <el-table-column prop="role" label="身份" min-width="120" />
+          <el-table-column prop="id" label="ID" min-width="30" />
+          <el-table-column prop="name" label="姓名" min-width="50" />
+          <el-table-column prop="mobile" label="手机号" min-width="80" />
+          <el-table-column prop="insertTime" label="注册时间" min-width="100" />
+          <el-table-column prop="role" label="身份" min-width="70" />
           <el-table-column label="操作" min-width="70" >
             <template #default="scope">
               <div class="flex items-center space-x-6">

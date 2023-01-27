@@ -11,7 +11,7 @@
 
     <!-- logo -->
     <div class="py-3 px-7">
-      <img :src="logoImg" alt="logo" width="98" height="36">
+      <img :src="logoImg" alt="logo" width="110" height="40">
     </div>
 
     <!-- 首页 -->
@@ -58,7 +58,7 @@
 import api from '/src/api/index.js'
 import { ref } from 'vue'
 import { House, Menu as IconMenu, Folder, Setting } from '@element-plus/icons-vue'
-import logoImg from '/src/assets/images/logo.webp'
+import logoImg from '/src/assets/images/logo.png'
 
 const openedsArr = ref(sessionStorage.getItem('asideIndex') ? [sessionStorage.getItem('asideIndex')] : [])
 const list = ref([])

@@ -32,14 +32,14 @@
     >
       <template #default="slotProps">
         <el-table :data="slotProps.list" :border="true" stripe style="width: 100%">
-          <el-table-column prop="id" label="员工ID" min-width="100" />
-          <el-table-column prop="name" label="员工姓名" min-width="130" />
+          <el-table-column prop="id" label="员工ID" min-width="70" />
+          <el-table-column prop="name" label="员工姓名" min-width="90" />
           <el-table-column prop="mobile" label="手机号" min-width="130" />
-          <el-table-column prop="inserttime" label="注册时间" min-width="130" />
-          <el-table-column prop="orderNum" label="成交总量" min-width="130" />
-          <el-table-column prop="orderPrice" label="成交总额" min-width="130" />
-          <el-table-column prop="customerNum" label="客户数量" min-width="130" />
-          <el-table-column label="操作">
+          <el-table-column prop="inserttime" label="注册时间" min-width="180" />
+          <el-table-column prop="orderNum" label="成交总量" min-width="90" />
+          <el-table-column prop="orderPrice" label="成交总额" min-width="90" />
+          <el-table-column prop="customerNum" label="客户数量" min-width="90" />
+          <el-table-column label="操作" min-width="120">
             <template #default="scope">
               <p class="text-primary cursor-pointer hover:font-bold hover:underline" @click="removeStaff(scope.row)">删除员工</p>
             </template>

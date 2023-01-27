@@ -1,6 +1,6 @@
 <template>
-  <div class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5 bg-gradient-to-br from-orange-50 to-red-100">
-    <div class=" bg-[rgba(255,255,255,0.5)] text-gray-500 rounded-3xl shadow-xl shadow-red-300/50 w-full overflow-hidden" style="max-width:900px">
+  <div class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5 bg-gray-200">
+    <div class=" bg-[rgba(255,255,255,0.5)] text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:900px">
       <div class="md:flex w-full">
         <div class="hidden md:block w-1/2 bg-primary py-10 px-10">
           <svg id="a87032b8-5b37-4b7e-a4d9-4dbfbe394641" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@
               transform="translate(-227.576 -76.46149)" fill="#2f2e41" />
           </svg>
         </div>
-        <div class="w-full md:w-1/2 py-14 px-10 md:px-14">
+        <div class="w-full md:w-1/2 py-14 px-10 md:px-14 bg-gray-300/10">
           <div class="text-center mb-10">
             <h1 class="font-bold text-3xl text-gray-900">欢迎登录</h1>
             <p class="mt-2">请输入您的账号密码</p>

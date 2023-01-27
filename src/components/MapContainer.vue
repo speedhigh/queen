@@ -1,5 +1,5 @@
 <template>
-  <div id="container" class="p-0 m-0 w-full h-[830px]" />
+  <div id="container" class="p-0 m-0 w-full h-[600px]" />
 </template>
 
 <script setup>
@@ -20,6 +20,9 @@ const props = defineProps({
 
 const map = shallowRef(null)
 const polyline = shallowRef(null)
+
+const marker = shallowRef(null)
+
 const textList = shallowRef([])
 
 const initMap = function () {
@@ -66,8 +69,12 @@ const initMap = function () {
         strokeOpacity:0.7,
         showDir: true
       })
+      marker.value = new AMap.Marker({
+        position: props.path[props.path.length - 1]
+      })
     }
 
+    map.value.add([marker.value])
     map.value.add([polyline.value])
     map.value.add(textList.value)
     map.value.setFitView()

@@ -31,7 +31,7 @@
         <el-table :data="slotProps.list" :border="true" stripe style="width: 100%">
           <el-table-column prop="id" label="订单ID" min-width="50" />
           <el-table-column prop="addressee" label="收货人" min-width="90" />
-          <el-table-column prop="mobile" label="手机号" min-width="100" />
+          <el-table-column prop="mobile" label="手机号" min-width="120" />
           <el-table-column prop="address" label="收货地址" min-width="280" />
           <el-table-column prop="product" label="订单信息" min-width="250" />
           <el-table-column prop="orderPrice" label="订单金额" min-width="100" />
