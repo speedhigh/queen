@@ -82,9 +82,10 @@
           </svg>
         </div>
         <div class="w-full md:w-1/2 py-14 px-10 md:px-14 bg-gray-300/10">
-          <div class="text-center mb-10">
-            <h1 class="font-bold text-3xl text-gray-900">欢迎登录</h1>
-            <p class="mt-2">请输入您的账号密码</p>
+          <div class="mb-10">
+            <h1 class="font-bold text-2xl text-gray-900">欢迎登录</h1>
+            <p class="mt-3 font-bold text-2xl text-gray-900">光达跨境医用CRM-E系统</p>
+            <!-- <p class="mt-2">请输入您的账号密码</p> -->
           </div>
           <div>
             <div class="flex -mx-3">
